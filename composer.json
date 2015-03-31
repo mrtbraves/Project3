@@ -1,5 +1,18 @@
 {
   "require": {
-    "slim/slim": "~2.6"
+    "slim/slim": "2.*",
+    "guzzle/guzzle": "v3.9.3"
+
+  },
+  "autoload":{
+    "psr-4":{
+      "Common\\Authentication\\": "src/Common/Authentication",
+      "Common\\Connections\\": "src/Common/Connections",
+      "Common\\Data\\": "src/Common/Data",
+      "Config\\": "src/Config",
+      "Views\\": "src/Views",
+      "Controllers\\": "src/Controllers"
+    }
   }
+
 }
