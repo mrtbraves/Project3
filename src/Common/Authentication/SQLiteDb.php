@@ -48,17 +48,9 @@ class SQLiteDb
 
         //print_r($this->users);
 
-
     }
 
-    public function getUsers(){
-
+    public function getUsers() {
         return $this->users;
-
     }
-
-
-
-
-
 }

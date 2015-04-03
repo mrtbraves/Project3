@@ -25,61 +25,27 @@ class AuthController extends Controller
      *
      * @access public
      */
-    public function action()
-    {
-
-        print_r($_REQUEST);
-//        $postData = $this->request->getPost();
-//
-//
-//        $username = $postData->username;
-//        $error = "Wrong Username or Password".PHP_EOL;
-//        $active = false;
-//        $memtype = 'inmem';
-//
-//        //echo 'Authenticate the above two different ways' . var_dump($postData);
-//
-//        $auth = new Authenticate($postData);
-//        $result = $auth->authenticate($postData->username, $postData->password);
-//
-//        if($result === true){
-//
-//            $active = true;
-//
-//            $view = new WelcomeView();
-//            $view->show(array(
-//                'active'    => $active
-//            ));
-//
-//            die;
-//        }
-
-
-        $view = new LoginForm(array(
-//            'active'    => $active,
-//            'username'  => $username,
-//            'error'     => $error,
-//            'memtype'   => $memtype
-        ));
+    public function action() {
+        $view = new LoginForm();
         $view->show();
-
     }
 
-    public function login(){
+    public function login() {
+        $username = htmlentities($_POST['username']);
+        $password = htmlentities($_POST['password']);
+        $error = "Wrong Username or Password".PHP_EOL;
 
-        print_r($_REQUEST);
+       //echo 'Authenticate the above two different ways' . var_dump($postData);
 
+        $auth = new Authenticate();
+        $result = $auth->authenticate($username, $password);
 
-
-
-        //$view = new LoginForm(array(
-//            'active'    => $active,
-//            'username'  => $username,
-//            'error'     => $error,
-//            'memtype'   => $memtype
-       // ));
-       // $view->show();
-
-
+       if ($result === true) {
+            // header( 'Location: /welcome' ) ;
+           $view = new WelcomeView();
+           $view->show();
+           die;
+       }
+       echo $error;
     }
 }
