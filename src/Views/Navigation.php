@@ -26,11 +26,10 @@ class Navigation
     }
 </style>
 <div class="nav">
-    <a >CS4350 Project One</a>
+    <a >CS4350 Project Three</a>
 
-        <form style="float: right; margin-top:-5px; margin-right:10px" method="post" action="/">
+        <form style="float: right; margin-top:-5px; margin-right:10px">
             <input class="logout" type="submit" value="Logout">
-
         </form>
 
 </div>

@@ -5,13 +5,8 @@ namespace Views;
 
 class LoginForm extends View
 {
-    public function __construct($data = array())
+    public function __construct()
     {
-
-      //print_r($data);
-      $username = $data['username'];
-      $error = $data['error'];
-      $memtype = $data['memtype'];
         $this->content = <<<LOGIN_FORM
 <!DOCTYPE html>
 <html>
@@ -147,20 +142,13 @@ class LoginForm extends View
               <div class="container">
 
                 <h4>Please Login</h4>
-                <div id="error" style="margin-bottom:5px; color: firebrick">$error</div>
                 <div class="formcontrol">
                   <label for="username">Username</label>
-                  <input type="text" id="username" name="username" value="$username" autocomplete="off">
+                  <input type="text" id="username" name="username" autocomplete="off">
                 </div>
                 <div class="formcontrol">
                   <label for="username">Password </label>
                   <input type="password" id="password" name="password">
-                </div>
-                <div class="formcontrol">
-                  <label style="cursor: pointer">InMem <input type="radio" class="radio" name="memtype" value="inmem" checked> </label>
-                  <label style="cursor: pointer">InFile <input type="radio" class="radio" name="memtype" value="infile"> </label>
-                  <label style="cursor: pointer">MySQL <input type="radio" class="radio" name="memtype" value="mysql"> </label>
-                  <label style="cursor: pointer">SQLite <input type="radio" class="radio" name="memtype" value="sqlite"> </label>
                 </div>
                 <div style="text-align: right; margin-top:10px;">
                   <input class="button" type="button" value="Login" onclick="formSubmit()">
@@ -176,16 +164,11 @@ class LoginForm extends View
 
 <script>
 
-	function formSubmit(){
-
-
-
+	function formSubmit() {
 		$.post('/login/', $("#loginForm").serialize()).done(function (data) {
-
+        
           alert(data);
 		});
-
-
 	}
 </script>
 

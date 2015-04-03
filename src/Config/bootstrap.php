@@ -33,13 +33,20 @@ $app = new \Slim\Slim(
 
 $app->get('/login/', function () {
 
-
+	
     $logincontroller = new \Controllers\AuthController();
 
     $logincontroller->action();
 });
 
 $app->post('/login/', function () {
+
+    $logincontroller = new \Controllers\AuthController();
+
+    $logincontroller->login();
+});
+
+$app->get('/welcome/', function () {
 
     $logincontroller = new \Controllers\AuthController();
 

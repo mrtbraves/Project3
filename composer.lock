@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b75a472d66cf06bea3b28651f87d32f7",
+    "hash": "d6722554ebb30e1338c154d8fd63b749",
     "packages": [
         {
             "name": "guzzle/guzzle",
@@ -149,7 +149,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.6.5",
+            "version": "v2.6.6",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
