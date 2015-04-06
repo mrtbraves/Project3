@@ -26,13 +26,22 @@ class Navigation
     }
 </style>
 <div class="nav">
-    <a >CS4350 Project Three</a>
+    CS4350 Project Three
 
-        <form style="float: right; margin-top:-5px; margin-right:10px">
-            <input class="logout" type="submit" value="Logout">
-        </form>
+        <div style="float: right; margin-top:-5px; margin-right:10px">
+            <input class="logout" type="submit" value="Logout" onclick="logout()">
+        </div>
 
 </div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+
+<script>
+    function logout() {
+        location.replace("/login/");
+    }
+</script>
 
 NAVIGATION;
     }

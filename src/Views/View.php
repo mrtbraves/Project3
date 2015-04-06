@@ -32,5 +32,8 @@ abstract class View
 
     }
 
-
-}
+    public function showPartial($data = array())
+        {
+            echo $this->content;//Output content of pages that extend View Class
+        }
+    }
