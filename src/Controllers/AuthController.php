@@ -33,9 +33,6 @@ class AuthController extends Controller
     public function login() {
         $username = htmlentities($_POST['username']);
         $password = htmlentities($_POST['password']);
-        $error = "Wrong Username or Password".PHP_EOL;
-
-       //echo 'Authenticate the above two different ways' . var_dump($postData);
 
         $auth = new Authenticate();
         $result = $auth->authenticate($username, $password);
@@ -43,9 +40,10 @@ class AuthController extends Controller
        if ($result === true) {
             // header( 'Location: /welcome' ) ;
            $view = new WelcomeView();
-           $view->show();
+           $view->showPartial();
            die;
        }
-       echo $error;
+       
+       echo "false";
     }
 }

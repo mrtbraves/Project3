@@ -137,11 +137,12 @@ class LoginForm extends View
         </style>
     </head>
     <body>
-        <div align="center">
+        <div id="parent" align="center">
             <form id="loginForm">
               <div class="container">
 
                 <h4>Please Login</h4>
+                <div id="error" class="hide" style="margin-bottom: 5px; color: firebrick">Wrong username or password</div>
                 <div class="formcontrol">
                   <label for="username">Username</label>
                   <input type="text" id="username" name="username" autocomplete="off">
@@ -159,15 +160,20 @@ class LoginForm extends View
     </body>
 </html>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
-
 <script>
+  $(document).ready(function() {
+    $("#error").hide();
+  });
 
 	function formSubmit() {
 		$.post('/login/', $("#loginForm").serialize()).done(function (data) {
-        
-          alert(data);
+      if (data === 'false') {
+        $("#error").show();
+        document.getElementById("password").value = '';
+        document.getElementById("password").focus();
+      } else {
+        $("#parent").html(data);
+      }
 		});
 	}
 </script>
