@@ -1,13 +1,11 @@
 <?php
 
-//$autoLoader =  realpath(
-//    __DIR__.'..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php'
-//
-//);
-//
-//require $autoLoder;
+$autoLoader =  realpath(
+    __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php'
 
-require '../vendor/autoload.php';
+);
+
+require $autoLoader;
 
 
 // Load server specific configuration data.  Should
@@ -39,19 +37,24 @@ $app->get('/login/', function () {
     $logincontroller->action();
 });
 
-$app->post('/login/', function () {
+$app->post('/login/', function () use ($app) {
+    $username = $app->request()->params('username');
+    $password = $app->request()->params('password');
+
+    $logincontroller = new \Controllers\AuthController();
+
+    $logincontroller->login($username, $password);
+});
+
+$app->get('/welcome/', function () use ($app) {
+
 
     $logincontroller = new \Controllers\AuthController();
 
     $logincontroller->login();
 });
 
-$app->get('/welcome/', function () {
 
-    $logincontroller = new \Controllers\AuthController();
-
-    $logincontroller->login();
-});
 
 $app->run();
 

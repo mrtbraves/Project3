@@ -30,19 +30,18 @@ class AuthController extends Controller
         $view->show();
     }
 
-    public function login() {
-        $username = htmlentities($_POST['username']);
-        $password = htmlentities($_POST['password']);
+    public function login($username='', $password='') {
+
 
         $auth = new Authenticate();
         $result = $auth->authenticate($username, $password);
 
        if ($result === true) {
             // header( 'Location: /welcome' ) ;
-           $view = new WelcomeView();
-           $view->showPartial();
-           die;
-       }
+            $view = new WelcomeView();
+            $view->showPartial();
+            die;
+        }
        
        echo "false";
     }
