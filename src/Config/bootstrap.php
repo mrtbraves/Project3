@@ -17,10 +17,7 @@ require '../vendor/autoload.php';
 
 \Slim\Slim::registerAutoloader();
 
-
-
 require 'config.php';
-
 
 
 $app = new \Slim\Slim(
@@ -28,11 +25,14 @@ $app = new \Slim\Slim(
     $config['app']['slim-config']
 );
 
+$app->get('/', function () {
+	
+    $logincontroller = new \Controllers\AuthController();
 
-
+    $logincontroller->action();
+});
 
 $app->get('/login/', function () {
-
 	
     $logincontroller = new \Controllers\AuthController();
 
