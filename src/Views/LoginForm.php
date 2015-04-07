@@ -155,6 +155,10 @@ class LoginForm extends View
                   <input class="button" type="button" value="Login" onclick="formSubmit()">
                 </div>
               </div>
+              <div>
+              <p>username: daryl</p>
+              <p>password: 12345678</p>
+              </div>
             </form>
         </div>
     </body>
@@ -167,13 +171,13 @@ class LoginForm extends View
 
 	function formSubmit() {
 		$.post('/login/', $("#loginForm").serialize()).done(function (data) {
-      if (data === 'false') {
-        $("#error").show();
-        document.getElementById("password").value = '';
-        document.getElementById("password").focus();
-      } else {
-        $("#parent").html(data);
-      }
+          if (data === 'false') {
+            $("#error").show();
+            document.getElementById("password").value = '';
+            document.getElementById("password").focus();
+          } else {
+            $("#parent").html(data);
+          }
 		});
 	}
 </script>
